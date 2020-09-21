@@ -10,7 +10,7 @@ exclude:
 
 # Site settings
 title: 새싹코더의 자라나라 머리머리!
-subtitle: "구 재료쟁이/현 데이터과학 입문자의 코딩 머리 기르기 프로젝트!"
+subtitle: "데이터과학 쌩초보의 코딩 머리 기르기 프로젝트!"
 email: drsprout111@gmail.com
 name: 새싹코더 (Dr.Sprout)
 description: "코딩 머리 기르기 프로젝트"
@@ -24,7 +24,7 @@ logo: "/assets/logo_new.png"
 
 # Build settings
 markdown: kramdown
-inter_post_navigation: false
+inter_post_navigation: true
 highlightjs_theme: "monokai-sublime"
 
 # Pagination Settings

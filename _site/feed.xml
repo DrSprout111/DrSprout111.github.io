@@ -5,22 +5,23 @@
     <description>코딩 머리 기르기 프로젝트</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 20 Sep 2020 13:32:52 +0900</pubDate>
-    <lastBuildDate>Sun, 20 Sep 2020 13:32:52 +0900</lastBuildDate>
+    <pubDate>Mon, 21 Sep 2020 21:36:14 +0900</pubDate>
+    <lastBuildDate>Mon, 21 Sep 2020 21:36:14 +0900</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
     
       <item>
-        <title>Test post</title>
-        <description>&lt;p&gt;해봄&lt;/p&gt;
+        <title>블로그 시작</title>
+        <description>&lt;p&gt;앞으로 공부한 내용을 여기에 작성해 볼 생각이다.
+잘 할 수 있겠지??&lt;/p&gt;
 </description>
-        <pubDate>Sun, 20 Sep 2020 08:43:59 +0900</pubDate>
-        <link>http://localhost:4000/test/2020/09/20/dummy6.html</link>
-        <guid isPermaLink="true">http://localhost:4000/test/2020/09/20/dummy6.html</guid>
+        <pubDate>Mon, 21 Sep 2020 21:33:59 +0900</pubDate>
+        <link>http://localhost:4000/%EC%A3%BC%EC%A0%80%EB%A6%AC/2020/09/21/dummy6.html</link>
+        <guid isPermaLink="true">http://localhost:4000/%EC%A3%BC%EC%A0%80%EB%A6%AC/2020/09/21/dummy6.html</guid>
         
-        <category>test</category>
+        <category>주저리</category>
         
         
-        <category>Test</category>
+        <category>주저리</category>
         
       </item>
     
