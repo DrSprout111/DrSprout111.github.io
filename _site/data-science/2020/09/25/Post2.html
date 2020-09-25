@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>스케일러의 종류 및 효과 - 1</title>
+  <meta name="description" content="스케일러를 사용하여 feature와 target을 정규분포와 비슷하게 만들게 되면 학습이 잘 된다.">
+  
+  <meta name="author" content="새싹코더 (Dr.Sprout)">
+  <meta name="copyright" content="&copy; 새싹코더 (Dr.Sprout) 2020">
+  
+
+  <!-- External libraries -->
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/monokai-sublime.min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.7.1/css/lightbox.css">
+
+  <!-- Favicon and other icons (made with http://www.favicon-generator.org/) -->
+  <link rel="shortcut icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="/assets/icons/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+  <link rel="manifest" href="/assets/icons/manifest.json">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png">
+  <meta name="theme-color" content="#ffffff">
+
+  
+  <!-- Facebook OGP cards -->
+  <meta property="og:description" content="스케일러를 사용하여 feature와 target을 정규분포와 비슷하게 만들게 되면 학습이 잘 된다." />
+  <meta property="og:url" content="http://localhost:4000/data-science/2020/09/25/Post2.html">
+  <meta property="og:site_name" content="새싹코더의 자라나라 머리머리!" />
+  <meta property="og:title" content="스케일러의 종류 및 효과 - 1" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="http://localhost:4000/assets/instacode.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="612" />
+  <meta property="og:image:height" content="605" />
+  
+
+  
+  <!-- Twitter: card tags -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="스케일러의 종류 및 효과 - 1">
+  <meta name="twitter:description" content="스케일러를 사용하여 feature와 target을 정규분포와 비슷하게 만들게 되면 학습이 잘 된다.">
+  <meta name="twitter:image" content="http://localhost:4000/assets/instacode.png">
+  <meta name="twitter:url" content="http://localhost:4000/data-science/2020/09/25/Post2.html">
+  
+
+  
+
+  <!-- Site styles -->
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/data-science/2020/09/25/Post2.html">
+	<link rel="alternate" type="application/rss+xml" title="새싹코더의 자라나라 머리머리!" href="http://localhost:4000/feed.xml" />
+	
+	<!-- Tooltips -->
+	<script type="text/javascript">
+		window.tooltips = []
+	</script>
+</head>
+
+
+  <body>
+
+    <header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="/" class="logo">
+      
+      <img src="/assets/logo_new.png" alt="새싹코더의 자라나라 머리머리!">
+      
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">
+      <i class="fa fa-bars"></i>
+    </a>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+				
+	
+	<li class="nav-link"><a href="/about/">About</a>
+	
+
+	
+
+	
+
+	
+	<li class="nav-link"><a href="/posts/">Posts</a>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+    <div class="page-content">
+        <div class="post">
+
+<div class="post-header-container has-cover" style="background-image: url(/assets/instacode.png);">
+  <div class="scrim has-cover">
+    <header class="post-header">
+      <h1 class="title">스케일러의 종류 및 효과 - 1</h1>
+      <p class="info">by <strong>Dr. Sprout</strong></p>
+    </header>
+  </div>
+</div>
+
+<div class="wrapper">
+
+
+
+<section class="post-meta">
+  <div class="post-date">September 25, 2020</div>
+  <div class="post-categories">
+  in 
+    
+    <a href="/category/Data-Science">Data-science</a>
+    
+  
+  </div>
+</section>
+
+<article class="post-content">
+  <p>스케일러를 사용하여 <code class="highlighter-rouge">feature</code>와 <code class="highlighter-rouge">target</code>을 정규분포와 비슷하게 만들게 되면 학습이 잘 된다.</p>
+
+<p>무조건 잘 되는건 아니긴 한데, 해 봐서 스코어 올라가면 일단 써본다.</p>
+
+<p>통계학적인 배경지식이 너무 부족해서 일단은 따라하는 시늉만 해본다.</p>
+
+<p>배경지식을 틈틈히 쌓고 있으니 너무 나쁘게 보지는 말아줬으면…</p>
+
+<p>스케일러를 사용하면 데이터 분포를 어떻게 바꿀 수 있는가 확인해보기로 했다.</p>
+
+<hr />
+
+<p><br /></p>
+
+<h1 id="데이터-준비하기">데이터 준비하기</h1>
+
+<p>우선 다양한 분포의 데이터를 임의로 만들어 보았다.</p>
+
+<pre><code class="language-Python">from scipy.stats import skewnorm
+import numpy as np
+
+x1 = skewnorm.rvs(0, size=(500,1))
+x2 = skewnorm.rvs(-100, size=(500,1))
+x3 = skewnorm.rvs(100, size=(500,1))
+x4 = np.append(
+    np.random.normal(3,4,size=(250,1)),
+    np.random.normal(-4,1,size=(250,1)), axis=0)
+
+outlier = np.random.uniform(-20,20,size=(10,1))
+x1_out = np.append(x1, outlier, axis=0)
+x2_out = np.append(x2, outlier, axis=0)
+x3_out = np.append(x3, outlier, axis=0)
+x4_out = np.append(x4, outlier, axis=0)
+</code></pre>
+
+<p>만들어진 데이터 분포는 다음과 같다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>import seaborn as sns
+import matplotlib.pyplot as plt
+
+fig, ax = plt.subplots(2,4)
+fig.set_size_inches(12,6)
+fig.tight_layout()
+
+sns.distplot(x1, bins=50, ax=ax[0, 0])
+sns.distplot(x2, bins=50, ax=ax[0, 1])
+sns.distplot(x3, bins=50, ax=ax[0, 2])
+sns.distplot(x4, bins=50, ax=ax[0, 3])
+
+sns.distplot(x1_out, bins=50, ax=ax[1, 0])
+sns.distplot(x2_out, bins=50, ax=ax[1, 1])
+sns.distplot(x3_out, bins=50, ax=ax[1, 2])
+sns.distplot(x4_out, bins=50, ax=ax[1, 3])
+
+plt.subplots_adjust(wspace=0.3, hspace=0.3)
+
+plt.show()
+</code></pre></div></div>
+
+<p><img src="http://localhost:4000/assets/2020-09-25-Post2_files/2020-09-25-Post2_3_0.png" alt="png" /></p>
+
+<p><br /></p>
+
+<h1 id="이상치-없는-정규분포">이상치 없는 정규분포</h1>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from sklearn.preprocessing import MinMaxScaler, StandardScaler, RobustScaler
+from sklearn.preprocessing import QuantileTransformer, PowerTransformer
+from sklearn.compose import ColumnTransformer
+
+def show_dist1(x):
+  fig, ax = plt.subplots(2,3)
+  fig.set_size_inches(9,6)
+  fig.tight_layout()
+
+  titles = ['None',
+            'MinMax',
+            'Standard',
+            'Robust',
+            'Quantile',
+            'Power']
+  scalers = [ColumnTransformer([],remainder='passthrough'),
+            MinMaxScaler(), 
+            StandardScaler(),
+            RobustScaler(),
+            QuantileTransformer(n_quantiles=50, output_distribution='normal'),
+            PowerTransformer()]
+
+  for scaler, title, ax_ in zip(scalers, titles, ax.reshape(-1)):
+    res = scaler.fit_transform(x)
+    sns.distplot(res, bins=50, ax=ax_)
+    ax_.set_title(title)
+
+  plt.subplots_adjust(wspace=0.3, hspace=0.3)
+  plt.show()
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>show_dist1(x1)
+</code></pre></div></div>
+
+<p><img src="http://localhost:4000/assets/2020-09-25-Post2_files/2020-09-25-Post2_6_0.png" alt="png" /></p>
+
+<p>전반적으로 다 잘 변환이 되었다.
+<code class="highlighter-rouge">QuantileTransformer</code> 를 사용했을 때 양 쪽으로 꼬리가 생기는게 좀 아쉽다.</p>
+
+<p><br /></p>
+
+<h1 id="이상치-없는-왜정규분포">이상치 없는 왜정규분포</h1>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>show_dist1(x2)
+</code></pre></div></div>
+
+<p><img src="http://localhost:4000/assets/2020-09-25-Post2_files/2020-09-25-Post2_9_0.png" alt="png" /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>show_dist1(x3)
+</code></pre></div></div>
+
+<p><img src="http://localhost:4000/assets/2020-09-25-Post2_files/2020-09-25-Post2_10_0.png" alt="png" /></p>
+
+<p><code class="highlighter-rouge">QuantileTransformer</code> 가 약간 깡패인듯하다. 거의 반 강제로 정규분포화 시키는듯하다.
+<code class="highlighter-rouge">PowerTransformer</code> 도 꽤 괜찮다.
+나머지는 왜도를 잡지 못한다.</p>
+
+<p><br /></p>
+
+<h2 id="이상치-없는-쌍곡분포">이상치 없는 쌍곡분포</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>show_dist1(x4)
+</code></pre></div></div>
+
+<p><img src="http://localhost:4000/assets/2020-09-25-Post2_files/2020-09-25-Post2_13_0.png" alt="png" /></p>
+
+<p>쌍곡분포도 그냥 정규분포화 시킨다. 여기까지 오니까 이놈을 써도 되나 약간 무서워진다.</p>
+
+<p><br /></p>
+
+<h2 id="이상치-있는-정규분포">이상치 있는 정규분포</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>show_dist1(x1_out)
+</code></pre></div></div>
+
+<p><img src="http://localhost:4000/assets/2020-09-25-Post2_files/2020-09-25-Post2_16_0.png" alt="png" /></p>
+
+<p><br /></p>
+
+<h2 id="이상치-있는-왜정규분포">이상치 있는 왜정규분포</h2>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>show_dist1(x2_out)
+</code></pre></div></div>
+
+<p><img src="http://localhost:4000/assets/2020-09-25-Post2_files/2020-09-25-Post2_18_0.png" alt="png" /></p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>show_dist1(x3_out)
+</code></pre></div></div>
+
+<p><img src="http://localhost:4000/assets/2020-09-25-Post2_files/2020-09-25-Post2_19_0.png" alt="png" /></p>
+
+<p><br /></p>
+
+<h1 id="이상치-있는-쌍곡분포">이상치 있는 쌍곡분포</h1>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>show_dist1(x4_out)
+</code></pre></div></div>
+
+<p><img src="http://localhost:4000/assets/2020-09-25-Post2_files/2020-09-25-Post2_21_0.png" alt="png" /></p>
+
+<p>이상치가 있어도 다른 애들은 정신 못차리는데 <code class="highlighter-rouge">QuantileTransformer</code> 는 그냥 다 정규분포화 시키는거같다.</p>
+
+<p><br /></p>
+
+<h1 id="quantiletransformer는-뭐하는-놈이지">QuantileTransformer는 뭐하는 놈이지?</h1>
+
+<p>뭐하는 놈인가 싶어서 대충 등간격 배열을 때려넣어 봤다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>def show_scaler_function(x):
+  fig, ax = plt.subplots(2,3)
+  fig.set_size_inches(9,6)
+  fig.tight_layout()
+
+  titles = ['None',
+            'MinMax',
+            'Standard',
+            'Robust',
+            'Quantile',
+            'Power']
+  scalers = [ColumnTransformer([],remainder='passthrough'),
+            MinMaxScaler(), 
+            StandardScaler(),
+            RobustScaler(),
+            QuantileTransformer(n_quantiles=50, output_distribution='normal'),
+            PowerTransformer()]
+
+  a = np.linspace(-30,30, 100).reshape(-1,1)
+
+  for scaler, title, ax_ in zip(scalers, titles, ax.reshape(-1)):
+    scaler.fit(x)
+    res = scaler.transform(a)
+    ax_.plot(a, res)
+    ax_.set_title(title)
+    ax_.set_xlabel('Before')
+    ax_.set_ylabel('After')
+
+  plt.subplots_adjust(wspace=0.5, hspace=0.3)
+  plt.show()
+</code></pre></div></div>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>show_scaler_function(x4_out)
+</code></pre></div></div>
+
+<p><img src="http://localhost:4000/assets/2020-09-25-Post2_files/2020-09-25-Post2_25_0.png" alt="png" /></p>
+
+<p><code class="highlighter-rouge">QuantileTransformer</code> 는 <code class="highlighter-rouge">n_quantile</code>개의 분위수를 찾아내서 분위수에 맞는 위치에다 박아버리는 놈이다.</p>
+
+<p>그래서 <code class="highlighter-rouge">n_quantile</code> 수가 <code class="highlighter-rouge">fit</code> 하는 데이터 수보다 많으면 에러가 뜬다. 학생 100 명 키 순으로 세워 놓고 3.14번째로 키 큰 학생을 부를 순 없으니까.</p>
+
+<p><br /></p>
+
+<h1 id="잡다한-스킬">잡다한 스킬</h1>
+
+<p><br /></p>
+
+<h2 id="스케일러-붙이기">스케일러 붙이기</h2>
+
+<p>어차피 <code class="highlighter-rouge">feature</code>를 스케일러에 넣고 바로 회귀모델에 넣을 거, 그냥 둘이 묶어버릴 수 있다.</p>
+
+<p>묶으면 좋다고 하더라. 어디에 좋은지는 지금은 기억이 안난다…</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">from</span> <span class="n">sklearn</span><span class="p">.</span><span class="n">pipeline</span> <span class="n">import</span> <span class="n">Pipline</span>
+<span class="k">from</span> <span class="n">sklearn</span><span class="p">.</span><span class="n">ensemble</span> <span class="n">import</span> <span class="n">RandomForestRegressor</span>
+
+<span class="k">model</span> <span class="p">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s1">'스케일러임'</span><span class="p">,</span> <span class="n">RobustScaler</span><span class="p">()),</span>
+                  <span class="p">(</span><span class="s1">'아무나무'</span><span class="p">,</span> <span class="n">RandomForestRegressor</span><span class="p">())])</span>
+
+<span class="k">model</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>        <span class="p">#</span> <span class="err">훈련은</span> <span class="err">이렇게</span>
+
+<span class="n">y_test_hat</span> <span class="p">=</span> <span class="k">model</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test</span><span class="p">)</span> <span class="p">#</span> <span class="err">예측은</span> <span class="err">저렇게</span>
+
+<span class="k">model</span><span class="p">.</span><span class="n">score</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span><span class="n">y_test</span><span class="p">)</span>         <span class="p">#</span> <span class="err">평가는</span> <span class="err">그렇게</span>
+
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">target</code>도 스케일러나 트랜스포머에 넣어서 정규분포화시킨 후 사용하면 스코어가 꽤 좋아지기도 한다.</p>
+
+<p>주의 할 점은 모델에서 나온 <code class="highlighter-rouge">output</code>을 <code class="highlighter-rouge">inverse_transform</code> 시켜 준 후 스코어를 구해야 한다는 것이다.</p>
+
+<p>왜 그런지는 스코어 계산이 어떻게 되는지만 알면 당연히 알 수 있다.</p>
+
+<p>이것도 회귀모델 앞단에 끼워넣을 수 있다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">from</span> <span class="n">sklearn</span><span class="p">.</span><span class="n">compose</span> <span class="n">import</span> <span class="n">TransformedTargetRegressor</span>
+
+<span class="p">#</span> <span class="n">transfomer</span><span class="err">를</span> <span class="err">넣을</span> <span class="err">수도</span> <span class="err">있고</span><span class="p">,</span>
+
+<span class="k">model</span> <span class="p">=</span> <span class="n">TransformedTargetRegressor</span><span class="p">(</span><span class="n">regressor</span><span class="p">=</span><span class="n">RandomForestRegressor</span><span class="p">(),</span> 
+                                   <span class="n">transformer</span><span class="p">=</span><span class="n">RobustScaler</span><span class="p">())</span>
+</code></pre></div></div>
+
+<p>변환 함수를 정의해서 넣을 수도 있다 (둘 다 동시에 넣는 것은 안된다).</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">def</span> <span class="n">target_trans</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+    <span class="n">return</span> <span class="n">np</span><span class="p">.</span><span class="n">log1p</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="n">def</span> <span class="n">target_inv_trans</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+    <span class="n">return</span> <span class="n">np</span><span class="p">.</span><span class="n">expm1</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="k">model</span> <span class="p">=</span> <span class="n">TransformedTargetRegressor</span><span class="p">(</span><span class="n">regressor</span><span class="p">=</span><span class="n">RandomForestRegressor</span><span class="p">(),</span>
+                                   <span class="n">func</span><span class="p">=</span><span class="n">target_trans</span><span class="p">,</span> 
+                                   <span class="n">inverse_func</span><span class="p">=</span><span class="n">target_inv_trans</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<p>쓸 일이 오게 될지는 몰라도 <code class="highlighter-rouge">check_inverse</code>를 <code class="highlighter-rouge">False</code>로 놓으면 <code class="highlighter-rouge">output</code>을 <code class="highlighter-rouge">inverse_transform</code>을 안 거치고 나온다.</p>
+
+<p>용도가 나름 있겠지..</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="k">model</span> <span class="p">=</span> <span class="n">TransformedTargetRegressor</span><span class="p">(</span><span class="n">regressor</span><span class="p">=</span><span class="n">RandomForestRegressor</span><span class="p">(),</span>
+                                   <span class="n">func</span><span class="p">=</span><span class="n">None</span><span class="p">,</span> 
+                                   <span class="n">inverse_func</span><span class="p">=</span><span class="n">None</span><span class="p">,</span> 
+                                   <span class="n">check_inverse</span><span class="p">=</span><span class="nb">False</span><span class="p">)</span>
+
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h2 id="2단-스케일러">2단 스케일러</h2>
+
+<p>스케일러 하나로는 좀 모자르다 싶으면 이렇게 추가해도 에러는 안 난다.</p>
+
+<p>에러는 안 나도 쓸모가 있을지는 장담 못한다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from sklearn.pipeline import Pipeline
+from sklearn.preprocessing import FunctionTransformer
+
+pipe = Pipeline([('quantile', QuantileTransformer(n_quantiles=50, output_distribution='normal')),
+                 ('function', FunctionTransformer(np.arcsinh))
+                 ])
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h2 id="column마다-다른-스케일러-적용하기">Column마다 다른 스케일러 적용하기</h2>
+
+<p>Feature마다 잘 맞는 스케일러가 다를 수 있다. 그럴때는 <code class="highlighter-rouge">ColumnTransformer</code> 를 쓰면 된다.</p>
+
+<p>이때, <code class="highlighter-rouge">remainder</code>를 <code class="highlighter-rouge">passthrough</code>로 놓지 않으면 스케일러를 안 쓴 행들이 반환되지 않는다.</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+
+<span class="n">col_trans</span> <span class="p">=</span> <span class="n">ColumnTransformer</span><span class="p">(</span>
+    <span class="p">[(</span><span class="s1">'norm1'</span><span class="p">,</span> <span class="n">MinMaxScaler</span><span class="p">(),</span> <span class="p">[</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">]),</span>
+     <span class="p">(</span><span class="s1">'norm2'</span><span class="p">,</span> <span class="n">QuantileTransformer</span><span class="p">(</span><span class="n">n_quantiles</span><span class="p">=</span><span class="m">50</span><span class="p">,</span> <span class="n">output_distribution</span><span class="p">=</span><span class="s1">'normal'</span><span class="p">),</span> <span class="p">[</span><span class="m">5</span><span class="p">,</span><span class="m">6</span><span class="p">,</span><span class="m">7</span><span class="p">,</span><span class="m">8</span><span class="p">,</span><span class="m">9</span><span class="p">])],</span>
+     <span class="n">remainder</span><span class="p">=</span><span class="s1">'passthrough'</span>
+     <span class="p">)</span>
+
+<span class="k">model</span> <span class="p">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s1">'스케일러임'</span><span class="p">,</span> <span class="n">col_trans</span><span class="p">),</span>
+                  <span class="p">(</span><span class="s1">'아무나무'</span><span class="p">,</span> <span class="n">RandomForestRegressor</span><span class="p">())])</span>
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h2 id="끔찍한-혼종">끔찍한 혼종</h2>
+
+<p>전후방 쌍 스케일러</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>
+<span class="n">col_trans</span> <span class="p">=</span> <span class="n">ColumnTransformer</span><span class="p">(</span>
+    <span class="p">[(</span><span class="s1">'norm1'</span><span class="p">,</span> <span class="n">MinMaxScaler</span><span class="p">(),</span> <span class="p">[</span><span class="m">0</span><span class="p">,</span><span class="m">1</span><span class="p">,</span><span class="m">2</span><span class="p">,</span><span class="m">3</span><span class="p">,</span><span class="m">4</span><span class="p">]),</span>
+     <span class="p">(</span><span class="s1">'norm2'</span><span class="p">,</span> <span class="n">QuantileTransformer</span><span class="p">(</span><span class="n">n_quantiles</span><span class="p">=</span><span class="m">50</span><span class="p">,</span> <span class="n">output_distribution</span><span class="p">=</span><span class="s1">'normal'</span><span class="p">),</span> <span class="p">[</span><span class="m">5</span><span class="p">,</span><span class="m">6</span><span class="p">,</span><span class="m">7</span><span class="p">,</span><span class="m">8</span><span class="p">,</span><span class="m">9</span><span class="p">])],</span>
+     <span class="n">remainder</span><span class="p">=</span><span class="s1">'passthrough'</span>
+     <span class="p">)</span>
+
+<span class="k">model</span> <span class="p">=</span> <span class="n">Pipeline</span><span class="p">([(</span><span class="s1">'스케일러임'</span><span class="p">,</span> <span class="n">col_trans</span><span class="p">),</span>
+                  <span class="p">(</span><span class="s1">'아무나무'</span><span class="p">,</span> <span class="n">RandomForestRegressor</span><span class="p">())])</span>
+
+<span class="k">model</span> <span class="p">=</span> <span class="n">TransformedTargetRegressor</span><span class="p">(</span><span class="n">regressor</span><span class="p">=</span><span class="k">model</span><span class="p">,</span> 
+                                   <span class="n">transformer</span><span class="p">=</span><span class="n">RobustScaler</span><span class="p">())</span>
+
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h1 id="마무리">마무리</h1>
+
+<p>어떤 스케일러를 사용할지는 데이터셋에 따라 다 달라서 경험이 쌓이기 전에는 결국 다 해봐야 할 것 같다.</p>
+
+</article>
+
+
+
+<section class="tags">
+  <strong>Tags:</strong> <a href="/tag/preprocessing">preprocessing</a>,&nbsp;<a href="/tag/scaler">scaler</a>,&nbsp;<a href="/tag/study">study</a>
+</section>
+
+
+
+<section class="rss">
+  <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+</section>
+
+<section class="share">
+  <span>Share: </span>
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+      <a href="//www.pinterest.com/pin/create/button/?description=%EC%8A%A4%EC%BC%80%EC%9D%BC%EB%9F%AC%EC%9D%98+%EC%A2%85%EB%A5%98+%EB%B0%8F+%ED%9A%A8%EA%B3%BC+-+1&url=http%3A%2F%2Flocalhost%3A4000%2Fdata-science%2F2020%2F09%2F25%2FPost2.html&media=http://localhost:4000/assets/instacode.png"
+        onclick="window.open(this.href, 'pinterest-share', 'width=550,height=255');return false;">
+        <i class="fa fa-pinterest-square fa-lg"></i>
+      </a>
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+      <a href="//www.reddit.com/submit" onclick="window.location = '//www.reddit.com/submit?url=' + encodeURIComponent('http://localhost:4000/data-science/2020/09/25/Post2.html') + '&title=스케일러의 종류 및 효과 - 1'; return false">
+        <i class="fa fa-reddit-square fa-lg"></i>
+      </a>
+    
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+  
+</section>
+
+	<section class="post-navigation">
+		<span class="prev-post">
+			
+		</span>
+		<span class="next-post">
+			
+		</span>
+	</section>
+
+
+
+
+</div>
+</div>
+
+    </div>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h3 class="footer-heading">새싹코더의 자라나라 머리머리!</h3>
+
+    <div class="site-navigation">
+
+      <p><strong>Site Map</strong></p>
+      <ul class="pages">
+				
+	
+	<li class="nav-link"><a href="/about/">About</a>
+	
+
+	
+
+	
+
+	
+	<li class="nav-link"><a href="/posts/">Posts</a>
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+
+      </ul>
+    </div>
+
+    <div class="site-contact">
+
+      <p><strong>Contact</strong></p>
+      <ul class="social-media-list">
+        <li>
+          <a href="mailto:drsprout111@gmail.com">
+            <i class="fa fa-envelope-o"></i>
+            <span class="username">drsprout111@gmail.com</span>
+          </a>
+        </li>
+
+        
+          
+          <li>
+            <a href="https://github.com/DrSprout111" title="Fork me on GitHub">
+              <i class="fa fa-github"></i>
+              <span class="username">DrSprout111</span>
+            </a>
+          </li>
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+
+      </ul>
+    </div>
+
+    <div class="site-signature">
+      <p class="rss-subscribe text"><strong>Subscribe <a href="/feed.xml">via RSS</a></strong></p>
+      <p class="text">코딩 머리 기르기 프로젝트</p>
+    </div>
+
+  </div>
+
+</footer>
+
+<!-- Scripts -->
+<script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.10/highlight.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
+<script src="//unpkg.com/popper.js@1"></script>
+<script src="//unpkg.com/tippy.js@5"></script>
+
+<script type="text/javascript">
+$(document).ready(function() {
+  // Default syntax highlighting
+  hljs.initHighlightingOnLoad();
+
+  // Header
+  var menuToggle = $('#js-mobile-menu').unbind();
+  $('#js-navigation-menu').removeClass("show");
+  menuToggle.on('click', function(e) {
+    e.preventDefault();
+    $('#js-navigation-menu').slideToggle(function(){
+      if($('#js-navigation-menu').is(':hidden')) {
+        $('#js-navigation-menu').removeAttr('style');
+      }
+    });
+  });
+
+	// Enable tooltips via Tippy.js
+	if (Array.isArray(window.tooltips)) {
+		window.tooltips.forEach(function(tooltip) {
+			var selector = tooltip[0];
+			var config = tooltip[1];
+			tippy(selector, config);
+		})
+	}
+});
+
+</script>
+
+
+
+
+
+
+  </body>
+
+</html>

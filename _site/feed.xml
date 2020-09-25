@@ -5,39 +5,25 @@
     <description>코딩 머리 기르기 프로젝트</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 21 Sep 2020 21:36:14 +0900</pubDate>
-    <lastBuildDate>Mon, 21 Sep 2020 21:36:14 +0900</lastBuildDate>
+    <pubDate>Fri, 25 Sep 2020 19:44:32 +0900</pubDate>
+    <lastBuildDate>Fri, 25 Sep 2020 19:44:32 +0900</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
     
       <item>
-        <title>블로그 시작</title>
-        <description>&lt;p&gt;앞으로 공부한 내용을 여기에 작성해 볼 생각이다.
-잘 할 수 있겠지??&lt;/p&gt;
-</description>
-        <pubDate>Mon, 21 Sep 2020 21:33:59 +0900</pubDate>
-        <link>http://localhost:4000/%EC%A3%BC%EC%A0%80%EB%A6%AC/2020/09/21/dummy6.html</link>
-        <guid isPermaLink="true">http://localhost:4000/%EC%A3%BC%EC%A0%80%EB%A6%AC/2020/09/21/dummy6.html</guid>
+        <title>스케일러의 종류 및 효과 - 1</title>
+        <description>&lt;p&gt;스케일러를 사용하여 &lt;code class=&quot;highlighter-rouge&quot;&gt;feature&lt;/code&gt;와 &lt;code class=&quot;highlighter-rouge&quot;&gt;target&lt;/code&gt;을 정규분포와 비슷하게 만들게 되면 학습이 잘 된다.&lt;/p&gt; &lt;p&gt;무조건 잘 되는건 아니긴 한데, 해 봐서 스코어 올라가면 일단 써본다.&lt;/p&gt; &lt;p&gt;통계학적인 배경지식이 너무 부족해서 일단은 따라하는...</description>
+        <pubDate>Fri, 25 Sep 2020 17:43:59 +0900</pubDate>
+        <link>http://localhost:4000/data-science/2020/09/25/Post2.html</link>
+        <guid isPermaLink="true">http://localhost:4000/data-science/2020/09/25/Post2.html</guid>
         
-        <category>주저리</category>
+        <category>preprocessing</category>
         
+        <category>scaler</category>
         
-        <category>주저리</category>
-        
-      </item>
-    
-      <item>
-        <title>Welcome to Jekyll!</title>
-        <description>&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different...</description>
-        <pubDate>Mon, 20 Apr 2015 17:43:59 +0900</pubDate>
-        <link>http://localhost:4000/jekyll/2015/04/20/welcome-to-jekyll.html</link>
-        <guid isPermaLink="true">http://localhost:4000/jekyll/2015/04/20/welcome-to-jekyll.html</guid>
-        
-        <category>jekyll</category>
-        
-        <category>welcome</category>
+        <category>study</category>
         
         
-        <category>Jekyll</category>
+        <category>Data-Science</category>
         
       </item>
     
