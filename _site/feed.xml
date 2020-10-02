@@ -5,16 +5,32 @@
     <description>코딩 머리 기르기 프로젝트</description>
     <link>http://localhost:4000/</link>
     <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 25 Sep 2020 19:50:13 +0900</pubDate>
-    <lastBuildDate>Fri, 25 Sep 2020 19:50:13 +0900</lastBuildDate>
+    <pubDate>Fri, 02 Oct 2020 12:17:17 +0900</pubDate>
+    <lastBuildDate>Fri, 02 Oct 2020 12:17:17 +0900</lastBuildDate>
     <generator>Jekyll v3.8.6</generator>
+    
+      <item>
+        <title>머신러닝 연습용 데이터 가져오기</title>
+        <description>&lt;p&gt;머신러닝을 공부하려면 여러가지 예제 상황을 다루어 보는 것이 좋다더라.&lt;/p&gt; &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Scikit-learn&lt;/code&gt;에 있는 예제들은 너무 정갈하고 깔끔해서 비현실적이다. 인생은 그렇게 쉽지 않다.&lt;/p&gt; &lt;p&gt;오늘은 그래서 여기저기 떠도는 데이터셋 저장소들을 소개하고 가장 유명한...</description>
+        <pubDate>Fri, 02 Oct 2020 08:43:59 +0900</pubDate>
+        <link>http://localhost:4000/data%20science/2020/10/02/Post3.html</link>
+        <guid isPermaLink="true">http://localhost:4000/data%20science/2020/10/02/Post3.html</guid>
+        
+        <category>dataset</category>
+        
+        <category>study</category>
+        
+        
+        <category>Data Science</category>
+        
+      </item>
     
       <item>
         <title>스케일러의 종류 및 효과 - 1</title>
         <description>&lt;p&gt;스케일러를 사용하여 &lt;code class=&quot;highlighter-rouge&quot;&gt;feature&lt;/code&gt;와 &lt;code class=&quot;highlighter-rouge&quot;&gt;target&lt;/code&gt;을 정규분포와 비슷하게 만들게 되면 학습이 잘 된다.&lt;/p&gt; &lt;p&gt;무조건 잘 되는건 아니긴 한데, 해 봐서 스코어 올라가면 일단 써본다.&lt;/p&gt; &lt;p&gt;통계학적인 배경지식이 너무 부족해서 일단은 따라하는...</description>
         <pubDate>Fri, 25 Sep 2020 17:43:59 +0900</pubDate>
-        <link>http://localhost:4000/data-science/2020/09/25/Post2.html</link>
-        <guid isPermaLink="true">http://localhost:4000/data-science/2020/09/25/Post2.html</guid>
+        <link>http://localhost:4000/datascience/2020/09/25/Post2.html</link>
+        <guid isPermaLink="true">http://localhost:4000/datascience/2020/09/25/Post2.html</guid>
         
         <category>preprocessing</category>
         
@@ -23,7 +39,7 @@
         <category>study</category>
         
         
-        <category>Data-Science</category>
+        <category>Datascience</category>
         
       </item>
     

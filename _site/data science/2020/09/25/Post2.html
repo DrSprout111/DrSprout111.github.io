@@ -42,11 +42,11 @@
   
   <!-- Facebook OGP cards -->
   <meta property="og:description" content="스케일러를 사용하여 feature와 target을 정규분포와 비슷하게 만들게 되면 학습이 잘 된다." />
-  <meta property="og:url" content="http://localhost:4000/data-science/2020/09/25/Post2.html">
+  <meta property="og:url" content="http://localhost:4000/data%20science/2020/09/25/Post2.html">
   <meta property="og:site_name" content="새싹코더의 자라나라 머리머리!" />
   <meta property="og:title" content="스케일러의 종류 및 효과 - 1" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="http://localhost:4000/assets/instacode.png" />
+  <meta property="og:image" content="http://localhost:4000/assets/code-944499_960_720.jpg" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="612" />
   <meta property="og:image:height" content="605" />
@@ -57,15 +57,15 @@
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="스케일러의 종류 및 효과 - 1">
   <meta name="twitter:description" content="스케일러를 사용하여 feature와 target을 정규분포와 비슷하게 만들게 되면 학습이 잘 된다.">
-  <meta name="twitter:image" content="http://localhost:4000/assets/instacode.png">
-  <meta name="twitter:url" content="http://localhost:4000/data-science/2020/09/25/Post2.html">
+  <meta name="twitter:image" content="http://localhost:4000/assets/code-944499_960_720.jpg">
+  <meta name="twitter:url" content="http://localhost:4000/data%20science/2020/09/25/Post2.html">
   
 
   
 
   <!-- Site styles -->
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="http://localhost:4000/data-science/2020/09/25/Post2.html">
+  <link rel="canonical" href="http://localhost:4000/data%20science/2020/09/25/Post2.html">
 	<link rel="alternate" type="application/rss+xml" title="새싹코더의 자라나라 머리머리!" href="http://localhost:4000/feed.xml" />
 	
 	<!-- Tooltips -->
@@ -116,6 +116,8 @@
 
 	
 
+	
+
 
       </ul>
     </nav>
@@ -126,7 +128,7 @@
     <div class="page-content">
         <div class="post">
 
-<div class="post-header-container has-cover" style="background-image: url(/assets/instacode.png);">
+<div class="post-header-container has-cover" style="background-image: url(/assets/code-944499_960_720.jpg);">
   <div class="scrim has-cover">
     <header class="post-header">
       <h1 class="title">스케일러의 종류 및 효과 - 1</h1>
@@ -144,7 +146,7 @@
   <div class="post-categories">
   in 
     
-    <a href="/category/Data-Science">Data-science</a>
+    <a href="/category/Data Science">Data science</a>
     
   
   </div>
@@ -216,8 +218,10 @@ plt.show()
 
 <h1 id="이상치-없는-정규분포">이상치 없는 정규분포</h1>
 
+<p>스케일러 효과 없는 녀석도 비교하기 위해 <code class="highlighter-rouge">FunctionTransformer</code>를 사용했다.</p>
+
 <div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>from sklearn.preprocessing import MinMaxScaler, StandardScaler, RobustScaler
-from sklearn.preprocessing import QuantileTransformer, PowerTransformer
+from sklearn.preprocessing import QuantileTransformer, PowerTransformer, FunctionTransformer
 from sklearn.compose import ColumnTransformer
 
 def show_dist1(x):
@@ -231,12 +235,12 @@ def show_dist1(x):
             'Robust',
             'Quantile',
             'Power']
-  scalers = [ColumnTransformer([],remainder='passthrough'),
-            MinMaxScaler(), 
-            StandardScaler(),
-            RobustScaler(),
-            QuantileTransformer(n_quantiles=50, output_distribution='normal'),
-            PowerTransformer()]
+  scalers = [FunctionTransformer(),
+             MinMaxScaler(), 
+             StandardScaler(),
+             RobustScaler(),
+             QuantileTransformer(n_quantiles=50, output_distribution='normal'),
+             PowerTransformer()]
 
   for scaler, title, ax_ in zip(scalers, titles, ax.reshape(-1)):
     res = scaler.fit_transform(x)
@@ -335,7 +339,7 @@ def show_dist1(x):
             'Robust',
             'Quantile',
             'Power']
-  scalers = [ColumnTransformer([],remainder='passthrough'),
+  scalers = [FunctionTransformer(),
             MinMaxScaler(), 
             StandardScaler(),
             RobustScaler(),
@@ -582,7 +586,7 @@ pipe = Pipeline([('quantile', QuantileTransformer(n_quantiles=50, output_distrib
     
     
     
-      <a href="//www.pinterest.com/pin/create/button/?description=%EC%8A%A4%EC%BC%80%EC%9D%BC%EB%9F%AC%EC%9D%98+%EC%A2%85%EB%A5%98+%EB%B0%8F+%ED%9A%A8%EA%B3%BC+-+1&url=http%3A%2F%2Flocalhost%3A4000%2Fdata-science%2F2020%2F09%2F25%2FPost2.html&media=http://localhost:4000/assets/instacode.png"
+      <a href="//www.pinterest.com/pin/create/button/?description=%EC%8A%A4%EC%BC%80%EC%9D%BC%EB%9F%AC%EC%9D%98+%EC%A2%85%EB%A5%98+%EB%B0%8F+%ED%9A%A8%EA%B3%BC+-+1&url=http%3A%2F%2Flocalhost%3A4000%2Fdata%2520science%2F2020%2F09%2F25%2FPost2.html&media=http://localhost:4000/assets/code-944499_960_720.jpg"
         onclick="window.open(this.href, 'pinterest-share', 'width=550,height=255');return false;">
         <i class="fa fa-pinterest-square fa-lg"></i>
       </a>
@@ -651,7 +655,7 @@ pipe = Pipeline([('quantile', QuantileTransformer(n_quantiles=50, output_distrib
     
     
     
-      <a href="//www.reddit.com/submit" onclick="window.location = '//www.reddit.com/submit?url=' + encodeURIComponent('http://localhost:4000/data-science/2020/09/25/Post2.html') + '&title=스케일러의 종류 및 효과 - 1'; return false">
+      <a href="//www.reddit.com/submit" onclick="window.location = '//www.reddit.com/submit?url=' + encodeURIComponent('http://localhost:4000/data%20science/2020/09/25/Post2.html') + '&title=스케일러의 종류 및 효과 - 1'; return false">
         <i class="fa fa-reddit-square fa-lg"></i>
       </a>
     
@@ -673,6 +677,14 @@ pipe = Pipeline([('quantile', QuantileTransformer(n_quantiles=50, output_distrib
 			
 		</span>
 		<span class="next-post">
+			
+				<a href="/data%20science/2020/10/02/Post3.html">
+					<span class="page-number">머신러닝 연습용 데이터 가져오기</span>
+					<span class="fa-stack fa-lg">
+						<i class="fa fa-square fa-stack-2x"></i>
+						<i class="fa fa-angle-double-right fa-stack-1x fa-inverse"></i>
+					</span>
+				</a>
 			
 		</span>
 	</section>
@@ -706,6 +718,8 @@ pipe = Pipeline([('quantile', QuantileTransformer(n_quantiles=50, output_distrib
 
 	
 	<li class="nav-link"><a href="/posts/">Posts</a>
+	
+
 	
 
 	
